@@ -1,5 +1,5 @@
 <template>
-  <h1>A.O.E - Randomizer</h1>
+  <h1>A.O.E. IV - Randomizer</h1>
   <Randomizer />
 </template>
 
@@ -15,7 +15,7 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -27,10 +27,23 @@ export default defineComponent({
 body {
   background-color: #0f1119;
 }
+
+h1,
+h2,
+h3 {
+  font-family: "EB Garamond", serif;
+}
+
 h1,
 h2,
 h3,
 p {
   color: #ffdf91;
+}
+
+.btn {
+  &--primary {
+    
+  }
 }
 </style>
