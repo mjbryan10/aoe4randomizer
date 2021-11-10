@@ -1,30 +1,44 @@
 <template>
   <div>
-    <button :disabled="loading" @click="randomizeCiv">Randomize!</button>
-    <label for="no_duplicates">
-      <input
-        v-model="noDuplicates"
-        type="checkbox"
-        name="duplicates"
-        id="no_duplicates "
-      />
-      No duplicates
-    </label>
-    <div>
+    <div class="random-btn__cotainer">
+      <button
+        class="btn btn--primary"
+        :disabled="loading"
+        @click="randomizeCiv"
+      >
+        Randomize!
+      </button>
+      <label for="no_duplicates">
+        <input
+          v-model="noDuplicates"
+          type="checkbox"
+          name="duplicates"
+          id="no_duplicates "
+        />
+        No duplicates
+      </label>
+    </div>
+    <div v-if="loading || selectedCiv" class="selection separated">
       <p v-if="loading">Loading...</p>
       <template v-else-if="selectedCiv">
-        <p>{{ selectedCiv }}</p>
-        <button @click="selectCiv">select</button>
+        <p class="selected-civ">{{ selectedCiv }}</p>
+        <button class="btn btn--secondary" @click="selectCiv">Select</button>
       </template>
     </div>
 
-    <div>
-      <ul>
+    <div v-if="selectedCivs.length" class="list-container separated">
+      <ul class="bulleted">
         <li v-for="(item, index) in selectedCivs" :key="item + index">
           {{ item }}
         </li>
       </ul>
-      <button v-if="selectedCivs.length" @click="clearSelection">Clear</button>
+      <button
+        class="btn btn--secondary"
+        v-if="selectedCivs.length"
+        @click="clearSelection"
+      >
+        Clear
+      </button>
     </div>
   </div>
 </template>
@@ -93,19 +107,29 @@ export default defineComponent({
 </script>
 
 <style scoped>
-a {
-  color: #42b983;
+.random-btn__cotainer {
+  margin: 0 0 8px 0;
+}
+.selection {
+  background-image: linear-gradient(0deg, #002845, #013f63);
+  background-image: linear-gradient(#394766, #181c29);
+  margin: 0 auto;
+  padding: 8px 16px;
+  display: flex;
+  width: auto;
+  align-items: center;
+  justify-content: space-between;
 }
 
-label {
-  margin: 0 0.5em;
-  font-weight: bold;
+.selected-civ {
+  font-size: 1.3rem;
+  margin: 0;
+  margin-right: 8px;
 }
 
-code {
-  background-color: #eee;
-  padding: 2px 4px;
-  border-radius: 4px;
-  color: #304455;
+.list-container {
+  color: #c7c7c7;
+  background-image: linear-gradient(#394766, #181c29);
+  padding: 8px 16px;
 }
 </style>
