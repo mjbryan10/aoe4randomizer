@@ -1,9 +1,10 @@
 <template>
   <div>
-    <button @click="randomizeCiv">Randomize!</button>
+    <button :disabled="loading" @click="randomizeCiv">Randomize!</button>
 
     <div>
-      <p v-if="selectedCiv">Result: {{ selectedCiv }}</p>
+      <p v-if="loading">Loading...</p>
+      <p v-else-if="selectedCiv">Result: {{ selectedCiv }}</p>
     </div>
   </div>
 </template>
@@ -25,18 +26,23 @@ export default defineComponent({
   name: "Radomizer",
   setup: () => {
     const selectedCiv = ref<CivResult | null>(null);
+    const loading = ref(false);
 
     function randomizeCiv() {
+      loading.value = true;
       const civKeys = Object.keys(CivResult) as Array<keyof typeof CivResult>;
 
       const randomNum = Math.floor(Math.random() * civKeys.length);
 
       const selectedKey = civKeys[randomNum];
 
-      selectedCiv.value = CivResult[selectedKey];
+      setTimeout(() => {
+        selectedCiv.value = CivResult[selectedKey];
+        loading.value = false;
+      }, 500);
     }
 
-    return { selectedCiv, randomizeCiv };
+    return { selectedCiv, randomizeCiv, loading };
   },
 });
 </script>
