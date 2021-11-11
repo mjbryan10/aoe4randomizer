@@ -8,13 +8,8 @@
       >
         Randomize!
       </button>
-      <label for="no_duplicates">
-        <input
-          v-model="noDuplicates"
-          type="checkbox"
-          name="duplicates"
-          id="no_duplicates "
-        />
+      <label>
+        <input v-model="noDuplicates" type="checkbox" />
         No duplicates
       </label>
     </div>
