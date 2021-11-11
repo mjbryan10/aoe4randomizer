@@ -77,7 +77,7 @@ export default defineComponent({
       setTimeout(() => {
         selectedCiv.value = civs[randomNum];
         loading.value = false;
-      }, 500);
+      }, 250);
     }
 
     const selectedCivs = ref<CivResult[]>([]);
