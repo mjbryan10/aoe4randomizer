@@ -9,6 +9,7 @@
     "vue": "^3.0.5"
   },
   "devDependencies": {
+    "@babel/types": "^7.16.0",
     "@vitejs/plugin-vue": "^1.2.5",
     "@vue/compiler-sfc": "^3.0.5",
     "sass": "^1.43.4",
